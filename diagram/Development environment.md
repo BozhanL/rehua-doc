@@ -82,8 +82,8 @@ flowchart LR
             Nginx@{img: "https://api.iconify.design/vscode-icons:file-type-nginx.svg", w: 60, h: 60, constraint: "on"}
             ZFS0@{img: "https://api.iconify.design/simple-icons:truenas.svg", w: 60, h: 60, constraint: "on"}
 
-            FrontendService[FrontendService]
-            BackendService[BackendService]
+            FrontendService[Frontend Service]
+            BackendService[Backend Service]
             MongoDB[MongoDB]
             Nginx[Nginx]
             ZFS0[ZFS]

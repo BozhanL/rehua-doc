@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+
 # Development environment
 
 ```mermaid
@@ -12,7 +14,7 @@ flowchart LR
 
     DevContainers0@{img: "https://api.iconify.design/vscode-icons:file-type-docker.svg", w: 60, h: 60, constraint: "on"}
     DevContainers1@{img: "https://api.iconify.design/vscode-icons:file-type-docker.svg", w: 60, h: 60, constraint: "on"}
-    
+
     Git0@{img: "https://api.iconify.design/vscode-icons:file-type-git.svg", w: 60, h: 60, constraint: "on"}
     Git1@{img: "https://api.iconify.design/vscode-icons:file-type-git.svg", w: 60, h: 60, constraint: "on"}
 
@@ -47,7 +49,7 @@ flowchart LR
     end
 
     subgraph GitHub
-    
+
     PR0@{img: "https://api.iconify.design/mdi:source-pull.svg", w: 60, h: 60, constraint: "on"}
 
     action0@{img: "https://api.iconify.design/logos:github-actions.svg", w: 60, h: 60, constraint: "on"}

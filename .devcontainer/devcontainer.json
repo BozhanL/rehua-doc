@@ -18,5 +18,5 @@
     }
   },
 
-  "postCreateCommand": "python -m venv .venv && .venv/bin/pip install --require-hashes -r requirements.txt"
+  "postCreateCommand": "python -m venv .venv && .venv/bin/pip install --only-binary ':all:' --require-hashes -r requirements.txt"
 }

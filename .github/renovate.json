@@ -1,0 +1,15 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:best-practices",
+    "helpers:pinGitHubActionDigestsToSemver",
+    ":semanticCommits",
+    ":timezone(Pacific/Auckland)",
+
+    ":assignAndReview(BozhanL)",
+
+    "local>BozhanL/rehua-doc//.github/renovate/automerge"
+  ],
+
+  "labels": ["dependencies", "{{{manager}}}"]
+}

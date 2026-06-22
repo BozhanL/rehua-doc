@@ -1,0 +1,26 @@
+site_name: Rehua
+site_url: http://doc.rehua.rivensbane.com/
+
+# Repository
+repo_name: BozhanL/rehua
+repo_url: https://github.com/BozhanL/rehua
+
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.tabs
+
+markdown_extensions:
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+nav:
+  - Home: index.md
+  - Development:
+      - dev/index.md
+      - Development environment diagram: dev/Development environment diagram.md

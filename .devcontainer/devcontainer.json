@@ -1,0 +1,21 @@
+{
+  "name": "Material for MkDocs - VS Code dev container",
+  "image": "mcr.microsoft.com/devcontainers/python:3.14-trixie",
+  "forwardPorts": [8000],
+  "remoteUser": "vscode",
+  "customizations": {
+    // Configure properties specific to VS Code.
+    "vscode": {
+      "extensions": [
+        "ms-vsliveshare.vsliveshare",
+        "esbenp.prettier-vscode",
+        "redhat.vscode-yaml",
+        "HTMLHint.vscode-htmlhint",
+        "ecmel.vscode-html-css",
+        "oderwat.indent-rainbow"
+      ]
+    }
+  },
+
+  "postCreateCommand": "python -m venv .venv && .venv/bin/pip install -r requirements.txt"
+}

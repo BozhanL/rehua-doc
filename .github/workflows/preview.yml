@@ -38,7 +38,7 @@ jobs:
 
       - name: 📦 Install dependencies
         if: ${{ github.event.action != 'closed' }}
-        run: pip install -r requirements.txt
+        run: pip install --require-hashes -r requirements.txt
 
       - name: 📦 Get GitHub Pages URL
         uses: TuftsRT/get-pages-url@03ca0ae86ff191bc1167b5f0d72773e69ca4e5a9 # v1.0.1

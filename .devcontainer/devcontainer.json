@@ -12,7 +12,8 @@
         "redhat.vscode-yaml",
         "HTMLHint.vscode-htmlhint",
         "ecmel.vscode-html-css",
-        "oderwat.indent-rainbow"
+        "oderwat.indent-rainbow",
+        "SonarSource.sonarlint-vscode"
       ]
     }
   },

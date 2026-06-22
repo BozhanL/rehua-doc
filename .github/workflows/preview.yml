@@ -45,7 +45,7 @@ jobs:
         id: get-url
 
       - name: ✍️ Edit site_url
-        run: yq -yi '.site_url = "${{ steps.get-url.outputs.url }}"' mkdocs.yml
+        run: yq -i '.site_url = "${{ steps.get-url.outputs.url }}"' mkdocs.yml
 
       - name: 🏗️ Build
         if: ${{ github.event.action != 'closed' }}

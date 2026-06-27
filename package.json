@@ -17,6 +17,8 @@
     "npm": "^11.11"
   },
   "scripts": {
+    "dev": ".venv/bin/mkdocs serve",
+    "build": ".venv/bin/mkdocs build -s",
     "commitlint": "commitlint",
     "format": "prettier --check .",
     "format:fix": "prettier --write . ",

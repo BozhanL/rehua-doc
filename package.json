@@ -19,7 +19,8 @@
   "scripts": {
     "commitlint": "commitlint",
     "format": "prettier --check .",
-    "format:fix": "prettier --write . "
+    "format:fix": "prettier --write . ",
+    "prepare": "husky"
   },
   "config": {
     "commitizen": {

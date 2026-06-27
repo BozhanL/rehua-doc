@@ -1,0 +1,39 @@
+{
+  "name": "rehua-doc",
+  "version": "0.0.1",
+  "license": "GPL-3.0-or-later",
+  "homepage": "https://github.com/BozhanL/rehua-doc",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BozhanL/rehua-doc.git"
+  },
+  "bugs": {
+    "url": "https://github.com/BozhanL/rehua-doc/issues"
+  },
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "^24",
+    "npm": "^11.11"
+  },
+  "scripts": {
+    "commitlint": "commitlint",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write . ",
+    "prepare": "husky"
+  },
+  "config": {
+    "commitizen": {
+      "path": "@commitlint/cz-commitlint"
+    }
+  },
+  "dependencies": {
+    "patch-package": "8.0.1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "21.0.2",
+    "@commitlint/config-conventional": "21.0.2",
+    "husky": "9.1.7",
+    "prettier": "3.8.4"
+  }
+}

@@ -1,8 +1,11 @@
 {
   "name": "Material for MkDocs - VS Code dev container",
-  "image": "mcr.microsoft.com/devcontainers/python:3.14-trixie",
+  "dockerComposeFile": "compose.yaml",
+  "service": "app",
+  "shutdownAction": "stopCompose",
   "forwardPorts": [8000],
   "remoteUser": "vscode",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
   "customizations": {
     // Configure properties specific to VS Code.
     "vscode": {
@@ -17,6 +20,20 @@
       ]
     }
   },
+  "features": {
+    "ghcr.io/devcontainers/features/node:2.1.0": {
+      "version": "24",
+      "npmVersion": "11",
+      "pnpmVersion": "none"
+    },
+    "ghcr.io/devcontainers-extra/features/cz-cli:1.0.2": {},
+    "ghcr.io/devcontainers-extra/features/npm-package:1.0.4": {
+      "package": "@commitlint/cz-commitlint"
+    }
+  },
 
-  "postCreateCommand": "python -m venv .venv && .venv/bin/pip install --only-binary ':all:' --require-hashes -r requirements.txt"
+  "postCreateCommand": {
+    "venv": "python -m venv .venv && .venv/bin/pip install --only-binary ':all:' --require-hashes -r requirements.txt",
+    "npm": ["npm", "install"]
+  }
 }

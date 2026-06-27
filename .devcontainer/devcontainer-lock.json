@@ -1,0 +1,19 @@
+{
+  "features": {
+    "ghcr.io/devcontainers-extra/features/cz-cli:1.0.2": {
+      "version": "1.0.2",
+      "resolved": "ghcr.io/devcontainers-extra/features/cz-cli@sha256:84d32f60ec45bdca23a0ec69d753883fb01fe594f204c5903b2871b2ac4075ed",
+      "integrity": "sha256:84d32f60ec45bdca23a0ec69d753883fb01fe594f204c5903b2871b2ac4075ed"
+    },
+    "ghcr.io/devcontainers-extra/features/npm-package:1.0.4": {
+      "version": "1.0.4",
+      "resolved": "ghcr.io/devcontainers-extra/features/npm-package@sha256:ee315c064588643e1178eec33275efa55739f43761fc965b95a5d05eed70c76d",
+      "integrity": "sha256:ee315c064588643e1178eec33275efa55739f43761fc965b95a5d05eed70c76d"
+    },
+    "ghcr.io/devcontainers/features/node:2.1.0": {
+      "version": "2.1.0",
+      "resolved": "ghcr.io/devcontainers/features/node@sha256:586c9a6f7dd40bd3ba2cd41e7f2f88dcc31fbe5d1442afcbf07ffbc66b686857",
+      "integrity": "sha256:586c9a6f7dd40bd3ba2cd41e7f2f88dcc31fbe5d1442afcbf07ffbc66b686857"
+    }
+  }
+}

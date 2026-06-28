@@ -1,0 +1,25 @@
+services:
+  nginx:
+    image: nginx:1.30-trixie
+    ports:
+      - 80:80/tcp
+      - 443:443/tcp
+      - 443:443/udp
+    volumes:
+      - ./nginx/conf/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/conf/conf.d:/etc/nginx/conf.d:ro
+
+      - ./nginx/html:/usr/share/nginx/html:ro
+      - ./nginx/cert:/cert:ro
+      - ./nginx/log:/var/log/nginx:rw
+    environment:
+      TZ: Pacific/Auckland
+    restart: always
+
+  api:
+    image: ghcr.io/bozhanl/rehua-api:main
+    environment:
+      TZ: Pacific/Auckland
+      NODE_ENV: production
+    init: true
+    restart: always

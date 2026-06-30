@@ -23,7 +23,7 @@ openssl req -new -key nginx/localhost.key \
   -addext "basicConstraints = critical, CA:false" \
   -addext "subjectAltName = DNS:localhost, IP:127.0.0.1" \
   -addext "keyUsage = critical, digitalSignature" \
-  -addext "extendedKeyUsage=clientAuth, serverAuth" \
+  -addext "extendedKeyUsage = clientAuth, serverAuth" \
   | \
 openssl x509 -req -in - -CA ca.pem -CAkey ca.key \
   -copy_extensions copyall -out nginx/localhost.pem -days 3650
@@ -40,7 +40,7 @@ openssl req -new -key api/api.key \
   -addext "basicConstraints = critical, CA:false" \
   -addext "subjectAltName = DNS:api" \
   -addext "keyUsage = critical, digitalSignature, keyEncipherment, keyAgreement" \
-  -addext "extendedKeyUsage=clientAuth, serverAuth" \
+  -addext "extendedKeyUsage = clientAuth, serverAuth" \
   | \
 openssl x509 -req -in - -CA ca.pem -CAkey ca.key \
   -copy_extensions copyall -out api/api.pem -days 3650
@@ -57,7 +57,7 @@ openssl req -new -key mongo/mongo.key \
   -addext "basicConstraints = critical, CA:false" \
   -addext "subjectAltName = DNS:mongo" \
   -addext "keyUsage = critical, digitalSignature, keyEncipherment, keyAgreement" \
-  -addext "extendedKeyUsage=clientAuth, serverAuth" \
+  -addext "extendedKeyUsage = clientAuth, serverAuth" \
   | \
 openssl x509 -req -in - -CA ca.pem -CAkey ca.key \
   -copy_extensions copyall -out mongo/mongo.pem -days 3650

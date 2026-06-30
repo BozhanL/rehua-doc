@@ -15,8 +15,12 @@
         "redhat.vscode-yaml",
         "HTMLHint.vscode-htmlhint",
         "ecmel.vscode-html-css",
+        "ms-azuretools.vscode-containers",
+        "SonarSource.sonarlint-vscode",
         "oderwat.indent-rainbow",
-        "SonarSource.sonarlint-vscode"
+        "mongodb.mongodb-vscode",
+        "github.vscode-github-actions",
+        "GitHub.vscode-pull-request-github"
       ]
     }
   },

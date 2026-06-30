@@ -34,6 +34,13 @@ jobs:
       - name: 📦 Install dependencies
         run: pip install --only-binary ':all:' --require-hashes -r requirements.txt
 
+      - name: 📦 Configure GitHub Pages
+        id: setup
+        uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
+
+      - name: ✍️ Edit site_url
+        run: yq -i '.site_url = "${{ steps.setup.outputs.base_url }}"' mkdocs.yml
+
       - name: 🏗️ Build
         env:
           NO_MKDOCS_2_WARNING: 1

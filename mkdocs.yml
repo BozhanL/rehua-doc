@@ -41,6 +41,7 @@ markdown_extensions:
 
 nav:
   - Home: index.md
+  - Usage: usage.md
   - Development:
       - dev/index.md
       - Development environment diagram: dev/Development environment diagram.md

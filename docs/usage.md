@@ -13,7 +13,7 @@ This page explains how to get started with rehua.
 7. Edit username, password, connection string for mongo in `mongo/mongo_username.txt`, `mongo/mongo_password.txt`, `mongo/mongodb_url.txt`. Default is `admin`
 8. Execute `certs/create_test_cert.sh` to create internal certificates
 9. Edit `nginx/conf/conf.d/rehua.conf` to change `server_name` to your own domain.
-10. Put SSL/TLS certificate and private key to `certs/nginx` folder, and update `ssl_certificate` and `ssl_certificate_key` in `nginx/conf/conf.d/rehua.conf`. The certificate and the key are inside `/cert/` folder
+10. Put SSL/TLS certificate and private key into the local `certs/nginx` folder, and update `ssl_certificate` and `ssl_certificate_key` in `nginx/conf/conf.d/rehua.conf`. (This folder is mounted into the nginx container at `/cert`.)
 11. Run `docker compose up -d` to start all services.
 
 ## Structure diagram

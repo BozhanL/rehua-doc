@@ -4,9 +4,8 @@ set -euo pipefail
 
 cd "$(dirname "$0")"
 
-# Prevent rm error when ./rehua not exist
-mkdir -p ./rehua
-rm -r ./rehua
+# Recreate output directory
+rm -rf ./rehua
 mkdir -p ./rehua
 
 docker pull ghcr.io/bozhanl/rehua-web:main

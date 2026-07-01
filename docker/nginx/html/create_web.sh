@@ -8,8 +8,11 @@ cd "$(dirname "$0")"
 rm -rf ./rehua
 mkdir -p ./rehua
 
-docker pull ghcr.io/bozhanl/rehua-web:main
+WEB_TAG="${1:-main}"
+IMAGE="ghcr.io/bozhanl/rehua-web:${WEB_TAG}"
 
-docker run --rm -tu root --init -v ./rehua:/output ghcr.io/bozhanl/rehua-web:main bash -c 'npm ci && npm run build -w web && cp -r ./web/out/. /output'
+docker pull "$IMAGE"
 
-docker image rm ghcr.io/bozhanl/rehua-web:main
+docker run --rm -tu root --init -v ./rehua:/output "$IMAGE" bash -c 'npm ci && npm run build -w web && cp -r ./web/out/. /output'
+
+docker image rm "$IMAGE"

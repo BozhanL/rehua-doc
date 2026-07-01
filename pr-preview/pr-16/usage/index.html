@@ -647,7 +647,7 @@
 <li>Edit username, password, connection string for mongo in <code>mongo/mongo_username.txt</code>, <code>mongo/mongo_password.txt</code>, <code>mongo/mongodb_url.txt</code>. Default is <code>admin</code></li>
 <li>Execute <code>certs/create_test_cert.sh</code> to create internal certificates</li>
 <li>Edit <code>nginx/conf/conf.d/rehua.conf</code> to change <code>server_name</code> to your own domain.</li>
-<li>Put SSL/TLS certificate and private key to <code>certs/nginx</code> folder, and update <code>ssl_certificate</code> and <code>ssl_certificate_key</code> in <code>nginx/conf/conf.d/rehua.conf</code>. The certificate and the key are inside <code>/cert/</code> folder</li>
+<li>Put SSL/TLS certificate and private key into the local <code>certs/nginx</code> folder, and update <code>ssl_certificate</code> and <code>ssl_certificate_key</code> in <code>nginx/conf/conf.d/rehua.conf</code>. (This folder is mounted into the nginx container at <code>/cert</code>.)</li>
 <li>Run <code>docker compose up -d</code> to start all services.</li>
 </ol>
 <h2 id="structure-diagram">Structure diagram</h2>

@@ -1,0 +1,1 @@
+mongodb://admin:admin@mongo:27017/?tls=true&tlsCAFile=%2Fcert%2Fca.pem&tlsCertificateKeyFile=%2Fcert%2Ffullchain_with_key.pem

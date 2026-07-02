@@ -10,7 +10,6 @@
 
   "python.terminal.activateEnvironment": true,
   "python.terminal.activateEnvInCurrentTerminal": true,
-  "python.defaultInterpreterPath": "./venv/bin/python",
 
   "yaml.schemas": {
     "https://squidfunk.github.io/mkdocs-material/schema.json": "mkdocs.yml"

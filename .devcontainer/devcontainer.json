@@ -3,7 +3,7 @@
   "dockerComposeFile": "compose.yaml",
   "service": "app",
   "shutdownAction": "stopCompose",
-  "forwardPorts": [8000],
+  "forwardPorts": [80, 443, 8000],
   "remoteUser": "vscode",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
   "customizations": {
@@ -15,8 +15,12 @@
         "redhat.vscode-yaml",
         "HTMLHint.vscode-htmlhint",
         "ecmel.vscode-html-css",
+        "ms-azuretools.vscode-containers",
+        "SonarSource.sonarlint-vscode",
         "oderwat.indent-rainbow",
-        "SonarSource.sonarlint-vscode"
+        "mongodb.mongodb-vscode",
+        "github.vscode-github-actions",
+        "GitHub.vscode-pull-request-github"
       ]
     }
   },
@@ -29,11 +33,25 @@
     "ghcr.io/devcontainers-extra/features/cz-cli:1.0.2": {},
     "ghcr.io/devcontainers-extra/features/npm-package:1.0.4": {
       "package": "@commitlint/cz-commitlint"
+    },
+    "ghcr.io/devcontainers/features/docker-in-docker:4.0.0": {
+      "moby": false
     }
   },
 
   "postCreateCommand": {
     "venv": "python -m venv .venv && .venv/bin/pip install --only-binary ':all:' --require-hashes -r requirements.txt",
     "npm": ["npm", "install"]
+  },
+  "portsAttributes": {
+    "80": {
+      "label": "nginx"
+    },
+    "443": {
+      "label": "nginx"
+    },
+    "8000": {
+      "label": "mkdocs"
+    }
   }
 }

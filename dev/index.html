@@ -583,6 +583,56 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#web-icons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Web Icons
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Web Icons">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scripts-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scripts Usage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-adding-new-svg-icons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When adding new SVG icons
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-removing-svg-icons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When removing SVG icons
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -720,6 +770,56 @@
     <span class="md-ellipsis">
       
         Example usage
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#web-icons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Web Icons
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Web Icons">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scripts-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scripts Usage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-adding-new-svg-icons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When adding new SVG icons
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-removing-svg-icons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When removing SVG icons
       
     </span>
   </a>
@@ -885,6 +985,33 @@ Then follow <a href="https://code.visualstudio.com/docs/devcontainers/containers
 
 <span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">functional</span><span class="p">.</span><span class="nx">assertFunction</span><span class="p">(</span><span class="nx">Home</span><span class="p">);</span>
 </code></pre></div>
+<h2 id="web-icons">Web Icons</h2>
+<p>Within the main repository, all the SVG icons used in the frontend are kept in <code>web/app/assets/icons</code>. In <code>web/app/assets/scripts</code>, there are two icon-related scripts:</p>
+<ol>
+<li>
+<p><code>normalise-icons.ts</code>: will standardise SVGs in the <code>icons</code> folder to ensure all icons can be manipulated in size, colour and other transformations.</p>
+</li>
+<li>
+<p><code>generate-icons.ts</code>: will generate <code>web/app/components/auto-generated-icons.ts</code>. This file imports each SVG icon from the <code>icons</code> folder and exports a <code>const icons</code> object record to be used within the <code>Icon.tsx</code> <code>name prop</code>. <strong>Never manually modify this file.</strong></p>
+</li>
+</ol>
+<h3 id="scripts-usage">Scripts Usage</h3>
+<p>These scripts are to be run <strong>only when</strong>:</p>
+<ul>
+<li>New SVG icons are added to the <code>icons</code> folder, <strong>OR</strong></li>
+<li>SVG icons are removed from the <code>icons</code> folder</li>
+</ul>
+<h3 id="when-adding-new-svg-icons">When adding new SVG icons</h3>
+<ol>
+<li><code>npm run normalise-icons -w web</code> - you will see a list of all icons and whether they have been changed or not. Newly added icons are likely to change, old ones will stay the same.</li>
+<li><code>npm run generate-icons -w web</code> - you will see the following file has been added: <code>web/app/components/auto-generated-icons.ts</code>. You will also see how many icons have been generated. <strong>Never manually modify this file.</strong></li>
+<li>Conduct linting as shown in <a href="#common-commands">common commands</a>.</li>
+</ol>
+<h3 id="when-removing-svg-icons">When removing SVG icons</h3>
+<ol>
+<li><code>npm run generate-icons -w web</code> - you will see the following file has been added: <code>web/app/components/auto-generated-icons.ts</code>. You will also see how many icons have been generated. <strong>Never manually modify this file.</strong></li>
+<li>Conduct linting as shown in <a href="#common-commands">common commands</a>.</li>
+</ol>
 
 
 

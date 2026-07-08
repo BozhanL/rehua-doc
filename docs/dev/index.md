@@ -147,3 +147,31 @@ function Home(): JSX.Element {
 
 export default functional.assertFunction(Home);
 ```
+
+## Web Icons
+
+Within the main repository, all the SVG icons used in the frontend are kept in `web/app/assets/icons`. In `web/app/assets/scripts`, there are two icon-related scripts:
+
+1. `normalise-icons.ts`: will standardise SVGs in the `icons` folder to ensure all icons can be manipulated in size, colour and other transformations.
+
+2. `generate-icons.ts`: will generate `web/app/components/auto-generated-icons.ts`. This file imports each SVG icon from the `icons` folder and exports a `const icons` object record to be used within the `Icon.tsx` `name prop`. **Never manually modify this file.**
+
+### Scripts Usage
+
+These scripts are to be run **only when**:
+
+- New SVG icons are added to the `icons` folder, **OR**
+- SVG icons are removed from the `icons` folder
+
+### When adding new SVG icons
+
+1. From the root folder `cd web`
+2. `npm run normalise-icons` - you will see a list of all icons and whether they have been changed or not. Newly added icons are likely to change, old ones will stay the same.
+3. `npm run generate-icons` - you will see the following file has been added: `web/app/components/auto-generated-icons.ts`. You will also see how many icons have been generated. **Never manually modify this file.**
+4. Conduct linting as shown in [common commands](#common-commands).
+
+### When removing SVG icons
+
+1. From the root folder `cd web`
+2. `npm run generate-icons` - you will see the following file has been added: `web/app/components/auto-generated-icons.ts`. You will also see how many icons have been generated. **Never manually modify this file.**
+3. Conduct linting as shown in [common commands](#common-commands).

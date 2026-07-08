@@ -171,6 +171,5 @@ These scripts are to be run **only when**:
 
 ### When removing SVG icons
 
-1. From the root folder `cd web`
-2. `npm run generate-icons` - you will see the following file has been added: `web/app/components/auto-generated-icons.ts`. You will also see how many icons have been generated. **Never manually modify this file.**
-3. Conduct linting as shown in [common commands](#common-commands).
+1. `npm run generate-icons -w web` - you will see the following file has been added: `web/app/components/auto-generated-icons.ts`. You will also see how many icons have been generated. **Never manually modify this file.**
+2. Conduct linting as shown in [common commands](#common-commands).

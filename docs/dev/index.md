@@ -165,10 +165,9 @@ These scripts are to be run **only when**:
 
 ### When adding new SVG icons
 
-1. From the root folder `cd web`
-2. `npm run normalise-icons` - you will see a list of all icons and whether they have been changed or not. Newly added icons are likely to change, old ones will stay the same.
-3. `npm run generate-icons` - you will see the following file has been added: `web/app/components/auto-generated-icons.ts`. You will also see how many icons have been generated. **Never manually modify this file.**
-4. Conduct linting as shown in [common commands](#common-commands).
+1. `npm run normalise-icons -w web` - you will see a list of all icons and whether they have been changed or not. Newly added icons are likely to change, old ones will stay the same.
+2. `npm run generate-icons -w web` - you will see the following file has been added: `web/app/components/auto-generated-icons.ts`. You will also see how many icons have been generated. **Never manually modify this file.**
+3. Conduct linting as shown in [common commands](#common-commands).
 
 ### When removing SVG icons
 

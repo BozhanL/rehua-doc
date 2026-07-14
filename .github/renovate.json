@@ -2,14 +2,21 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:best-practices",
+    "helpers:disableTypesNodeMajor",
     "helpers:pinGitHubActionDigestsToSemver",
     ":semanticCommits",
     ":timezone(Pacific/Auckland)",
 
+    "customManagers:dockerfileVersions",
+    "customManagers:githubActionsVersions",
+
     ":assignAndReview(BozhanL)",
 
+    "local>BozhanL/rehua-doc//.github/renovate/minimumReleaseAge",
     "local>BozhanL/rehua-doc//.github/renovate/automerge"
   ],
+  "ignorePresets": ["security:minimumReleaseAgeNpm"],
 
-  "labels": ["dependencies", "{{{manager}}}"]
+  "labels": ["dependencies", "{{{manager}}}"],
+  "postUpdateOptions": ["npmDedupe", "npmInstallTwice"]
 }

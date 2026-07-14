@@ -13,5 +13,6 @@
   ],
   "ignorePresets": ["security:minimumReleaseAgeNpm"],
 
-  "labels": ["dependencies", "{{{manager}}}"]
+  "labels": ["dependencies", "{{{manager}}}"],
+  "postUpdateOptions": ["npmDedupe", "npmInstallTwice"]
 }

@@ -8,8 +8,10 @@
 
     ":assignAndReview(BozhanL)",
 
+    "local>BozhanL/rehua-doc//.github/renovate/minimumReleaseAge",
     "local>BozhanL/rehua-doc//.github/renovate/automerge"
   ],
+  "ignorePresets": ["security:minimumReleaseAgeNpm"],
 
   "labels": ["dependencies", "{{{manager}}}"]
 }

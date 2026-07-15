@@ -41,6 +41,9 @@ services:
       TZ: Pacific/Auckland
       MONGO_INITDB_ROOT_USERNAME_FILE: /run/secrets/mongo_username
       MONGO_INITDB_ROOT_PASSWORD_FILE: /run/secrets/mongo_password
+      # Work around MongoDB 8.0+ startup crashes on Linux kernel 6.19
+      # https://jira.mongodb.org/browse/SERVER-121912?focusedId=8395283
+      GLIBC_TUNABLES: glibc.pthread.rseq=1
     user: 1000:1000
     volumes:
       - ./mongo/data:/data/db:rw

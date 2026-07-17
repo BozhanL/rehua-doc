@@ -1,6 +1,6 @@
 services:
   nginx:
-    image: nginx:1.30-trixie@sha256:29f8cc6c9d0072f7a79ea4647690f561c0dff83968d7f6d5684f23c6cfe6e41b
+    image: nginx:1.30-trixie@sha256:5cf90903deda2c5981b8ad05e7617ac010e389f0dde0ac83487c02c509281de6
     ports:
       - 80:80/tcp
       - 443:443/tcp
@@ -17,7 +17,7 @@ services:
     restart: always
 
   api:
-    image: ghcr.io/bozhanl/rehua-api:main@sha256:b4e493081cc2c7b83bde9a624b9b4119252c5499e201dc74ecb626d4370c17a2
+    image: ghcr.io/bozhanl/rehua-api:main@sha256:656df5b3f28c5a168bd7da396c57a2e9e5cc7ee7fafa802a17ee33abc96c6e9e
     environment:
       TZ: Pacific/Auckland
 

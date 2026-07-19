@@ -714,11 +714,12 @@
 
 <span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">ObjectFieldTemplate</span><span class="p">(</span>
 <span class="w">    </span><span class="nx">props</span><span class="o">:</span><span class="w"> </span><span class="kt">ObjectFieldTemplateProps</span><span class="p">,</span>
-<span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">JSX</span><span class="p">.</span><span class="nx">Element</span><span class="w"> </span><span class="p">{</span>
+<span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">context</span><span class="o">:</span><span class="w"> </span><span class="kt">unknown</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">props</span><span class="p">.</span><span class="nx">registry</span><span class="p">.</span><span class="nx">formContext</span><span class="p">;</span>
 <span class="w">    </span><span class="nx">typia</span><span class="p">.</span><span class="nx">assertGuard</span><span class="o">&lt;</span><span class="p">{</span><span class="w"> </span><span class="nx">objectFieldTemplate</span><span class="o">:</span><span class="w"> </span><span class="kt">ObjectFieldTemplateContext</span><span class="w"> </span><span class="p">}</span><span class="o">&gt;</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">context</span><span class="p">,</span>
 <span class="w">    </span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>The above code will cause compile time to increase 50 seconds.</p>

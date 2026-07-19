@@ -20,11 +20,12 @@ interface ObjectFieldTemplateContext {
 
 export default function ObjectFieldTemplate(
     props: ObjectFieldTemplateProps,
-): JSX.Element {
+): null {
     const context: unknown = props.registry.formContext;
     typia.assertGuard<{ objectFieldTemplate: ObjectFieldTemplateContext }>(
         context,
     );
+    return null;
 }
 ```
 

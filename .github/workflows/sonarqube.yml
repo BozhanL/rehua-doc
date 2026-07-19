@@ -1,28 +1,28 @@
 name: SonarQube
 
 on:
-  push:
-    branches: [main, master]
-  pull_request:
+    push:
+        branches: [main, master]
+    pull_request:
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+    group: ${{ github.workflow }}-${{ github.ref }}
+    cancel-in-progress: true
 
 permissions: {}
 
 jobs:
-  scan:
-    name: SonarQube
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-    steps:
-      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
-        with:
-          fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
+    scan:
+        name: SonarQube
+        runs-on: ubuntu-latest
+        permissions:
+            contents: read
+        steps:
+            - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+              with:
+                  fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
 
-      - name: SonarQube Scan
-        uses: SonarSource/sonarqube-scan-action@22918119ff8e1ca75a623e15c8296b6ea4fbe28f # v8.2.1
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+            - name: SonarQube Scan
+              uses: SonarSource/sonarqube-scan-action@22918119ff8e1ca75a623e15c8296b6ea4fbe28f # v8.2.1
+              env:
+                  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

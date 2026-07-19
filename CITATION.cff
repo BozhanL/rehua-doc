@@ -4,11 +4,11 @@
 cff-version: 1.2.0
 title: Rehua documentation
 message: >-
-  If you use this software, please cite it using the
-  metadata from this file.
+    If you use this software, please cite it using the
+    metadata from this file.
 type: software
 authors:
-  - name: Rehua Contributors
+    - name: Rehua Contributors
 repository-code: 'https://github.com/BozhanL/rehua-doc'
 abstract: Documentation for the Rehua project
 license: GPL-3.0-or-later

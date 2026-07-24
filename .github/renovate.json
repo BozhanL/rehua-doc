@@ -13,7 +13,8 @@
         ":assignAndReview(BozhanL)",
 
         "local>BozhanL/rehua-doc//.github/renovate/minimumReleaseAge",
-        "local>BozhanL/rehua-doc//.github/renovate/automerge"
+        "local>BozhanL/rehua-doc//.github/renovate/automerge",
+        "local>BozhanL/rehua-doc//.github/renovate/pip-compile"
     ],
     "ignorePresets": ["security:minimumReleaseAgeNpm"],
 

@@ -1,63 +1,63 @@
 name: Deploy PR previews
 
 on:
-  pull_request:
-    types:
-      - opened
-      - reopened
-      - synchronize
-      - closed
+    pull_request:
+        types:
+            - opened
+            - reopened
+            - synchronize
+            - closed
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: false
+    group: ${{ github.workflow }}-${{ github.ref }}
+    cancel-in-progress: false
 
 permissions:
-  contents: read
+    contents: read
 
 jobs:
-  preview:
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    permissions:
-      contents: write
-      pull-requests: write
-      pages: read # required by wait-for-pages-deployment in rossjrw/pr-preview-action
+    preview:
+        runs-on: ubuntu-latest
+        timeout-minutes: 5
+        permissions:
+            contents: write
+            pull-requests: write
+            pages: read # required by wait-for-pages-deployment in rossjrw/pr-preview-action
 
-    steps:
-      - name: 🏗 Checkout repository
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        steps:
+            - name: 🏗 Checkout repository
+              uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      - name: 🏗 Setup Python
-        if: ${{ github.event.action != 'closed' }}
-        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
-        with:
-          python-version: 3.14
-          cache: pip
-          check-latest: true
+            - name: 🏗 Setup Python
+              if: ${{ github.event.action != 'closed' }}
+              uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+              with:
+                  python-version: 3.14
+                  cache: pip
+                  check-latest: true
 
-      - name: 📦 Install dependencies
-        if: ${{ github.event.action != 'closed' }}
-        run: pip install --only-binary ':all:' --require-hashes -r requirements.txt
+            - name: 📦 Install dependencies
+              if: ${{ github.event.action != 'closed' }}
+              run: pip install --only-binary ':all:' --require-hashes -r requirements.txt
 
-      - name: 📦 Configure GitHub Pages
-        id: setup
-        uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
+            - name: 📦 Configure GitHub Pages
+              id: setup
+              uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
 
-      - name: ✍️ Edit site_url
-        run: yq -i '.site_url = "${{ steps.setup.outputs.base_url }}/pr-preview/pr-${{ github.event.number }}"' mkdocs.yml
+            - name: ✍️ Edit site_url
+              run: yq -i '.site_url = "${{ steps.setup.outputs.base_url }}/pr-preview/pr-${{ github.event.number }}"' mkdocs.yml
 
-      - name: 🏗️ Build
-        if: ${{ github.event.action != 'closed' }}
-        env:
-          NO_MKDOCS_2_WARNING: 1
-        run: mkdocs build -s
+            - name: 🏗️ Build
+              if: ${{ github.event.action != 'closed' }}
+              env:
+                  NO_MKDOCS_2_WARNING: 1
+              run: mkdocs build -s
 
-      - name: 📦 Upload preview build to GitHub
-        uses: rossjrw/pr-preview-action@ffa7509e91a3ec8dfc2e5536c4d5c1acdf7a6de9 # v1.8.1
-        with:
-          source-dir: site
-          preview-branch: gh-pages
-          umbrella-dir: pr-preview
-          pages-base-url: ${{ steps.setup.outputs.host }}
-          wait-for-pages-deployment: false
+            - name: 📦 Upload preview build to GitHub
+              uses: rossjrw/pr-preview-action@ffa7509e91a3ec8dfc2e5536c4d5c1acdf7a6de9 # v1.8.1
+              with:
+                  source-dir: site
+                  preview-branch: gh-pages
+                  umbrella-dir: pr-preview
+                  pages-base-url: ${{ steps.setup.outputs.host }}
+                  wait-for-pages-deployment: false

@@ -1,68 +1,68 @@
 services:
-  nginx:
-    image: nginx:1.30-trixie@sha256:5cf90903deda2c5981b8ad05e7617ac010e389f0dde0ac83487c02c509281de6
-    ports:
-      - 80:80/tcp
-      - 443:443/tcp
-      - 443:443/udp
-    volumes:
-      - ./nginx/conf/nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./nginx/conf/conf.d:/etc/nginx/conf.d:ro
+    nginx:
+        image: nginx:1.30-trixie@sha256:5cf90903deda2c5981b8ad05e7617ac010e389f0dde0ac83487c02c509281de6
+        ports:
+            - 80:80/tcp
+            - 443:443/tcp
+            - 443:443/udp
+        volumes:
+            - ./nginx/conf/nginx.conf:/etc/nginx/nginx.conf:ro
+            - ./nginx/conf/conf.d:/etc/nginx/conf.d:ro
 
-      - ./nginx/html:/usr/share/nginx/html:ro
-      - ./certs/nginx:/cert:ro
-      - ./nginx/log:/var/log/nginx:rw
-    environment:
-      TZ: Pacific/Auckland
-    restart: always
+            - ./nginx/html:/usr/share/nginx/html:ro
+            - ./certs/nginx:/cert:ro
+            - ./nginx/log:/var/log/nginx:rw
+        environment:
+            TZ: Pacific/Auckland
+        restart: always
 
-  api:
-    image: ghcr.io/bozhanl/rehua-api:main@sha256:610b3e0ad9af2cdc303cba2a263f9e978006bc6ccf824967fbf9386c217a86d5
-    environment:
-      TZ: Pacific/Auckland
+    api:
+        image: ghcr.io/bozhanl/rehua-api:main@sha256:610b3e0ad9af2cdc303cba2a263f9e978006bc6ccf824967fbf9386c217a86d5
+        environment:
+            TZ: Pacific/Auckland
 
-      NODE_ENV: production
+            NODE_ENV: production
 
-      API_CERT: /cert/api.pem
-      API_KEY: /cert/api.key
-      API_CA: /cert/ca.pem
-      MONGODB_URI_FILE: /run/secrets/mongo_url
-    volumes:
-      - ./certs/api:/cert:ro
-    secrets:
-      - mongo_url
-    init: true
-    restart: always
+            API_CERT: /cert/api.pem
+            API_KEY: /cert/api.key
+            API_CA: /cert/ca.pem
+            MONGODB_URI_FILE: /run/secrets/mongo_url
+        volumes:
+            - ./certs/api:/cert:ro
+        secrets:
+            - mongo_url
+        init: true
+        restart: always
 
-  mongo:
-    image: mongo:8.3@sha256:a7f5aa200005611166adcec0192c2f11d0acc3bfd9d5eb68e1a998a990412e41
-    restart: unless-stopped
-    environment:
-      TZ: Pacific/Auckland
-      MONGO_INITDB_ROOT_USERNAME_FILE: /run/secrets/mongo_username
-      MONGO_INITDB_ROOT_PASSWORD_FILE: /run/secrets/mongo_password
-      # Work around MongoDB 8.0+ startup crashes on Linux kernel 6.19
-      # https://jira.mongodb.org/browse/SERVER-121912?focusedId=8395283
-      GLIBC_TUNABLES: glibc.pthread.rseq=1
-    user: 1000:1000
-    volumes:
-      - ./mongo/data:/data/db:rw
-      - ./mongo/configdb:/data/configdb:rw
+    mongo:
+        image: mongo:8.3@sha256:a7f5aa200005611166adcec0192c2f11d0acc3bfd9d5eb68e1a998a990412e41
+        restart: unless-stopped
+        environment:
+            TZ: Pacific/Auckland
+            MONGO_INITDB_ROOT_USERNAME_FILE: /run/secrets/mongo_username
+            MONGO_INITDB_ROOT_PASSWORD_FILE: /run/secrets/mongo_password
+            # Work around MongoDB 8.0+ startup crashes on Linux kernel 6.19
+            # https://jira.mongodb.org/browse/SERVER-121912?focusedId=8395283
+            GLIBC_TUNABLES: glibc.pthread.rseq=1
+        user: 1000:1000
+        volumes:
+            - ./mongo/data:/data/db:rw
+            - ./mongo/configdb:/data/configdb:rw
 
-      - ./mongo/config:/etc/mongo:ro
-      - ./certs/mongo:/cert:ro
+            - ./mongo/config:/etc/mongo:ro
+            - ./certs/mongo:/cert:ro
 
-      - ./mongo/log:/var/log/mongodb:rw
-    secrets:
-      - mongo_username
-      - mongo_password
-    command: ['--config', '/etc/mongo/mongod.conf']
+            - ./mongo/log:/var/log/mongodb:rw
+        secrets:
+            - mongo_username
+            - mongo_password
+        command: ['--config', '/etc/mongo/mongod.conf']
 
 secrets:
-  mongo_url:
-    file: ./mongo/mongodb_url.txt
+    mongo_url:
+        file: ./mongo/mongodb_url.txt
 
-  mongo_username:
-    file: ./mongo/mongo_username.txt
-  mongo_password:
-    file: ./mongo/mongo_password.txt
+    mongo_username:
+        file: ./mongo/mongo_username.txt
+    mongo_password:
+        file: ./mongo/mongo_password.txt

@@ -6,42 +6,43 @@ repo_name: BozhanL/rehua
 repo_url: https://github.com/BozhanL/rehua
 
 theme:
-  name: material
-  features:
-    - navigation.instant
-    - navigation.instant.prefetch
-    - navigation.tabs
-  palette:
-    # Palette toggle for automatic mode
-    - media: '(prefers-color-scheme)'
-      toggle:
-        icon: material/brightness-auto
-        name: Switch to light mode
+    name: material
+    features:
+        - navigation.instant
+        - navigation.instant.prefetch
+        - navigation.tabs
+    palette:
+        # Palette toggle for automatic mode
+        - media: '(prefers-color-scheme)'
+          toggle:
+              icon: material/brightness-auto
+              name: Switch to light mode
 
-    # Palette toggle for light mode
-    - media: '(prefers-color-scheme: light)'
-      scheme: default
-      toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode
+        # Palette toggle for light mode
+        - media: '(prefers-color-scheme: light)'
+          scheme: default
+          toggle:
+              icon: material/brightness-7
+              name: Switch to dark mode
 
-    # Palette toggle for dark mode
-    - media: '(prefers-color-scheme: dark)'
-      scheme: slate
-      toggle:
-        icon: material/brightness-4
-        name: Switch to system preference
+        # Palette toggle for dark mode
+        - media: '(prefers-color-scheme: dark)'
+          scheme: slate
+          toggle:
+              icon: material/brightness-4
+              name: Switch to system preference
 
 markdown_extensions:
-  - pymdownx.superfences:
-      custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format
+    - pymdownx.superfences:
+          custom_fences:
+              - name: mermaid
+                class: mermaid
+                format: !!python/name:pymdownx.superfences.fence_code_format
 
 nav:
-  - Home: index.md
-  - Usage: usage.md
-  - Development:
-      - dev/index.md
-      - Development environment diagram: dev/Development environment diagram.md
+    - Home: index.md
+    - Usage: usage.md
+    - Development:
+          - dev/index.md
+          - dev/Development environment diagram.md
+          - dev/Performance.md

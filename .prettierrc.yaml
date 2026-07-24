@@ -1,0 +1,6 @@
+singleQuote: true
+trailingComma: all
+
+# MkDocs uses 4 spaces as indent
+# https://stackoverflow.com/a/70791200
+tabWidth: 4

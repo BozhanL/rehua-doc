@@ -17,7 +17,7 @@ services:
         restart: always
 
     api:
-        image: ghcr.io/bozhanl/rehua-api:main@sha256:c223548e1041cc752b798761408ed6dfd9155d6bc4697dfe935e3b2d7db4199e
+        image: ghcr.io/bozhanl/rehua-api:main@sha256:fa29a7366b2ba957f5a2f2187a944684a36a191a3cbd47b80aaed061ae0e56a7
         environment:
             TZ: Pacific/Auckland
 

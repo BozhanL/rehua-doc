@@ -14,7 +14,8 @@
 
         "local>BozhanL/rehua-doc//.github/renovate/minimumReleaseAge",
         "local>BozhanL/rehua-doc//.github/renovate/automerge",
-        "local>BozhanL/rehua-doc//.github/renovate/pip-compile"
+        "local>BozhanL/rehua-doc//.github/renovate/pip-compile",
+        "local>BozhanL/rehua-doc//.github/renovate/rehua-pin"
     ],
     "ignorePresets": ["security:minimumReleaseAgeNpm"],
 

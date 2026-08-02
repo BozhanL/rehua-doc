@@ -1,0 +1,11 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+
+    "packageRules": [
+        {
+            "matchSourceUrls": ["https://github.com/BozhanL/rehua"],
+            "matchUpdateTypes": ["pin"],
+            "enabled": false
+        }
+    ]
+}

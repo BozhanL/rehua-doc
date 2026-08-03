@@ -3,7 +3,8 @@
 
     "packageRules": [
         {
-            "matchSourceUrls": ["https://github.com/BozhanL/rehua"],
+            "matchDatasources": ["docker"],
+            "matchPackageNames": ["ghcr.io/bozhanl/rehua-*"],
             "matchUpdateTypes": ["pinDigest"],
             "enabled": false
         }

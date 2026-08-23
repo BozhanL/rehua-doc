@@ -692,37 +692,37 @@
     end</code></pre>
 <div class="highlight"><pre><span></span><code>flowchart LR
     subgraph local
-    FrontendDev@{img: &quot;https://avatars.githubusercontent.com/u/202766894&quot;, label: &quot;Frontend developer&quot;, pos: &quot;b&quot;, w: 60, h: 60,  constraint: &quot;on&quot;}
-    BackendDev@{img: &quot;https://avatars.githubusercontent.com/u/166127258&quot;, label: &quot;Backend developer&quot;, pos: &quot;b&quot;, w: 60, h: 60,  constraint: &quot;on&quot;}
-    Tester@{img: &quot;https://avatars.githubusercontent.com/u/35266436&quot;, label: &quot;Tester&quot;, pos: &quot;b&quot;, w: 60, h: 60, constraint: &quot;on&quot;}
+    FrontendDev@{img: "https://avatars.githubusercontent.com/u/202766894", label: "Frontend developer", pos: "b", w: 60, h: 60,  constraint: "on"}
+    BackendDev@{img: "https://avatars.githubusercontent.com/u/166127258", label: "Backend developer", pos: "b", w: 60, h: 60,  constraint: "on"}
+    Tester@{img: "https://avatars.githubusercontent.com/u/35266436", label: "Tester", pos: "b", w: 60, h: 60, constraint: "on"}
 
-    VSCode0@{img: &quot;https://api.iconify.design/vscode-icons:file-type-vscode.svg&quot;, w: 60, h: 60, constraint: &quot;on&quot;}
-    VSCode1@{img: &quot;https://api.iconify.design/vscode-icons:file-type-vscode.svg&quot;, w: 60, h: 60, constraint: &quot;on&quot;}
+    VSCode0@{img: "https://api.iconify.design/vscode-icons:file-type-vscode.svg", w: 60, h: 60, constraint: "on"}
+    VSCode1@{img: "https://api.iconify.design/vscode-icons:file-type-vscode.svg", w: 60, h: 60, constraint: "on"}
 
-    DevContainers0@{img: &quot;https://api.iconify.design/vscode-icons:file-type-docker.svg&quot;, w: 60, h: 60, constraint: &quot;on&quot;}
-    DevContainers1@{img: &quot;https://api.iconify.design/vscode-icons:file-type-docker.svg&quot;, w: 60, h: 60, constraint: &quot;on&quot;}
+    DevContainers0@{img: "https://api.iconify.design/vscode-icons:file-type-docker.svg", w: 60, h: 60, constraint: "on"}
+    DevContainers1@{img: "https://api.iconify.design/vscode-icons:file-type-docker.svg", w: 60, h: 60, constraint: "on"}
 
-    Git0@{img: &quot;https://api.iconify.design/vscode-icons:file-type-git.svg&quot;, w: 60, h: 60, constraint: &quot;on&quot;}
-    Git1@{img: &quot;https://api.iconify.design/vscode-icons:file-type-git.svg&quot;, w: 60, h: 60, constraint: &quot;on&quot;}
+    Git0@{img: "https://api.iconify.design/vscode-icons:file-type-git.svg", w: 60, h: 60, constraint: "on"}
+    Git1@{img: "https://api.iconify.design/vscode-icons:file-type-git.svg", w: 60, h: 60, constraint: "on"}
 
-    VSCode0[&quot;VSCode
+    VSCode0["VSCode
     VSCode: v1.117 or above
-    Dev Containers: latest&quot;]
-    VSCode1[&quot;VSCode
+    Dev Containers: latest"]
+    VSCode1["VSCode
     VSCode: v1.117 or above
-    Dev Containers: latest&quot;]
+    Dev Containers: latest"]
 
-    DevContainers0[&quot;Dev Containers
+    DevContainers0["Dev Containers
     image: typescript-node
-    Version: 24-trixie&quot;]
-    DevContainers1[&quot;Dev Containers
+    Version: 24-trixie"]
+    DevContainers1["Dev Containers
     image: typescript-node
-    Version: 24-trixie&quot;]
+    Version: 24-trixie"]
 
-    Git0[&quot;Git
-    Git: 2.53 or above&quot;]
-    Git1[&quot;Git
-    Git: 2.53 or above&quot;]
+    Git0["Git
+    Git: 2.53 or above"]
+    Git1["Git
+    Git: 2.53 or above"]
 
     FrontendDev -- Code on ---&gt; VSCode0
     BackendDev -- Code on ---&gt; VSCode1
@@ -737,12 +737,12 @@
 
     subgraph GitHub
 
-    PR0@{img: &quot;https://api.iconify.design/mdi:source-pull.svg&quot;, w: 60, h: 60, constraint: &quot;on&quot;}
+    PR0@{img: "https://api.iconify.design/mdi:source-pull.svg", w: 60, h: 60, constraint: "on"}
 
-    action0@{img: &quot;https://api.iconify.design/logos:github-actions.svg&quot;, w: 60, h: 60, constraint: &quot;on&quot;}
+    action0@{img: "https://api.iconify.design/logos:github-actions.svg", w: 60, h: 60, constraint: "on"}
 
     OwnBranch0[Own Branch]
-    main0[&quot;main&quot;]
+    main0["main"]
     PR0[Pull Request]
     action0[Action
     OS: ubuntu-latest
@@ -764,16 +764,16 @@
 
     subgraph Servers
         subgraph main
-            FrontendService@{img: &quot;https://api.iconify.design/tabler:brand-nextjs.svg&quot;, w: 60, h: 60, constraint: &quot;on&quot;}
-            BackendService@{img: &quot;https://api.iconify.design/vscode-icons:file-type-nestjs.svg&quot;, w: 60, h: 60, constraint: &quot;on&quot;}
-            MongoDB@{img: &quot;https://api.iconify.design/vscode-icons:file-type-mongo.svg&quot;, w: 60, h: 60, constraint: &quot;on&quot;}
-            Nginx@{img: &quot;https://api.iconify.design/vscode-icons:file-type-nginx.svg&quot;, w: 60, h: 60, constraint: &quot;on&quot;}
-            ZFS0@{img: &quot;https://api.iconify.design/simple-icons:truenas.svg&quot;, w: 60, h: 60, constraint: &quot;on&quot;}
+            FrontendService@{img: "https://api.iconify.design/tabler:brand-nextjs.svg", w: 60, h: 60, constraint: "on"}
+            BackendService@{img: "https://api.iconify.design/vscode-icons:file-type-nestjs.svg", w: 60, h: 60, constraint: "on"}
+            MongoDB@{img: "https://api.iconify.design/vscode-icons:file-type-mongo.svg", w: 60, h: 60, constraint: "on"}
+            Nginx@{img: "https://api.iconify.design/vscode-icons:file-type-nginx.svg", w: 60, h: 60, constraint: "on"}
+            ZFS0@{img: "https://api.iconify.design/simple-icons:truenas.svg", w: 60, h: 60, constraint: "on"}
 
-            FrontendService[&quot;Frontend Service
-            Next.js&quot;]
-            BackendService[&quot;Backend Service
-            NestJS&quot;]
+            FrontendService["Frontend Service
+            Next.js"]
+            BackendService["Backend Service
+            NestJS"]
             MongoDB[MongoDB]
             Nginx[Nginx]
             ZFS0[ZFS]
@@ -791,7 +791,7 @@
         end
 
         subgraph backup
-            ZFS1@{img: &quot;https://api.iconify.design/simple-icons:truenas.svg&quot;, w: 60, h: 60, constraint: &quot;on&quot;}
+            ZFS1@{img: "https://api.iconify.design/simple-icons:truenas.svg", w: 60, h: 60, constraint: "on"}
             ZFS1[ZFS]
 
             main0 -- Update config --&gt; ZFS1

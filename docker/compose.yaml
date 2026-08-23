@@ -28,6 +28,8 @@ services:
             API_CA: /cert/ca.pem
             MONGODB_URI_FILE: /run/secrets/mongo_url
         volumes:
+            - ./api:/data:rw
+
             - ./certs/api:/cert:ro
         secrets:
             - mongo_url

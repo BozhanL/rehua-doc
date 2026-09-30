@@ -7,8 +7,8 @@ This page explains how to get started with rehua.
 1. Install docker on the server
 2. Download the `docker` folder from [BozhanL/rehua-doc](https://github.com/BozhanL/rehua-doc). You can either run `git clone https://github.com/BozhanL/rehua-doc.git` or click <https://github.com/BozhanL/rehua-doc/archive/refs/heads/main.zip> to download entire repository, and delete unwanted files
 3. Enter the `docker` folder by `cd docker`
-4. (Optional) Edit `nginx/html/create_web.sh` file to choose web version. Default is `main`
-5. Execute `nginx/html/create_web.sh` to download and compile the web
+4. Execute `nginx/html/create_web.sh` to download and compile the web
+5. Replace `logo.jpg` and `favicon.jpg` with your own logo in `nginx/html/rehua` folder
 6. (Optional) Edit the image version for `api` in `compose.yaml` to match web version. Default is `main`
 7. Edit username, password, connection string for mongo in `mongo/mongo_username.txt`, `mongo/mongo_password.txt`, `mongo/mongodb_url.txt`. Default is `admin`
 8. Execute `certs/create_test_cert.sh` to create internal certificates

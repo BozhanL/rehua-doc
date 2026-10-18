@@ -716,7 +716,7 @@
 <li>Execute <code>nginx/html/create_web.sh</code> to download and compile the web</li>
 <li>Replace <code>logo.jpg</code> and <code>favicon.jpg</code> with your own logo in <code>nginx/html/rehua</code> folder</li>
 <li>(Optional) Edit the image version for <code>api</code> in <code>compose.yaml</code> to match web version. Default is <code>main</code></li>
-<li>Update <code>JWT_SECRET</code> in <code>compose.yaml</code> with your own secret key, generated using OpenSSL or other key generator</li>
+<li>Update <code>JWT_SECRET</code> in <code>compose.yaml</code> with your own secret key, generated using OpenSSL <code>openssl rand -hex 32</code> or other key generator</li>
 <li>Edit username, password, connection string for mongo in <code>mongo/mongo_username.txt</code>, <code>mongo/mongo_password.txt</code>, <code>mongo/mongodb_url.txt</code>. Default is <code>admin</code></li>
 <li>Execute <code>certs/create_test_cert.sh</code> to create internal certificates</li>
 <li>Edit <code>nginx/conf/conf.d/rehua.conf</code> to change <code>server_name</code> to your own domain.</li>
@@ -741,20 +741,20 @@
 <ol>
 <li>Insert Admin user document</li>
 </ol>
-<div class="highlight"><pre><span></span><code>use<span class="w"> </span>rehua
+<div class="highlight"><pre><span></span><code><span class="nx">use</span><span class="w"> </span><span class="nx">rehua</span>
 
-db.users.insertOne<span class="o">({</span>
-<span class="w">   </span><span class="s2">"userName"</span>:<span class="w"> </span><span class="s2">"admin1"</span>,
-<span class="w">   </span><span class="s2">"firstName"</span>:<span class="w"> </span><span class="s2">"Admin"</span>,
-<span class="w">   </span><span class="s2">"lastName"</span>:<span class="w"> </span><span class="s2">"Admin1"</span>,
-<span class="w">   </span><span class="s2">"password"</span>:<span class="w"> </span><span class="s2">"</span><span class="nv">$2</span><span class="s2">b</span><span class="nv">$10$hUHQsZLMXpjHMO9qbUhnkuSmo4oKLFrFfog3eTe1</span><span class="s2">.QlPLnQ4ser7a"</span>,
-<span class="w">   </span><span class="s2">"totpSecret"</span>:<span class="w"> </span><span class="s2">"JBSWY3DPEHPK3PXPJBSWY3DPEHPK3PXP"</span>,
-<span class="w">   </span><span class="s2">"email"</span>:<span class="w"> </span><span class="s2">"N/A"</span>,
-<span class="w">   </span><span class="s2">"status"</span>:<span class="w"> </span><span class="s2">"active"</span>,
-<span class="w">   </span><span class="s2">"homePhoneNumber"</span>:<span class="w"> </span><span class="s2">"N/A"</span>,
-<span class="w">   </span><span class="s2">"address"</span>:<span class="w"> </span><span class="s2">"N/A"</span>,
-<span class="w">   </span><span class="s2">"group"</span>:<span class="w"> </span><span class="s2">"admin"</span>,
-<span class="o">})</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">users</span><span class="p">.</span><span class="nx">insertOne</span><span class="p">({</span>
+<span class="w">   </span><span class="s2">"userName"</span><span class="o">:</span><span class="w"> </span><span class="s2">"admin1"</span><span class="p">,</span>
+<span class="w">   </span><span class="s2">"firstName"</span><span class="o">:</span><span class="w"> </span><span class="s2">"Admin"</span><span class="p">,</span>
+<span class="w">   </span><span class="s2">"lastName"</span><span class="o">:</span><span class="w"> </span><span class="s2">"Admin1"</span><span class="p">,</span>
+<span class="w">   </span><span class="s2">"password"</span><span class="o">:</span><span class="w"> </span><span class="s2">"$2b$10$hUHQsZLMXpjHMO9qbUhnkuSmo4oKLFrFfog3eTe1.QlPLnQ4ser7a"</span><span class="p">,</span>
+<span class="w">   </span><span class="s2">"totpSecret"</span><span class="o">:</span><span class="w"> </span><span class="s2">"JBSWY3DPEHPK3PXPJBSWY3DPEHPK3PXP"</span><span class="p">,</span>
+<span class="w">   </span><span class="s2">"email"</span><span class="o">:</span><span class="w"> </span><span class="s2">"N/A"</span><span class="p">,</span>
+<span class="w">   </span><span class="s2">"status"</span><span class="o">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span>
+<span class="w">   </span><span class="s2">"homePhoneNumber"</span><span class="o">:</span><span class="w"> </span><span class="s2">"N/A"</span><span class="p">,</span>
+<span class="w">   </span><span class="s2">"address"</span><span class="o">:</span><span class="w"> </span><span class="s2">"N/A"</span><span class="p">,</span>
+<span class="w">   </span><span class="s2">"group"</span><span class="o">:</span><span class="w"> </span><span class="s2">"admin"</span><span class="p">,</span>
+<span class="p">})</span>
 </code></pre></div>
 <ol>
 <li>use a totp website or app to get rolling code for the totp secret <code>JBSWY3DPEHPK3PXPJBSWY3DPEHPK3PXP</code></li>
@@ -779,17 +779,17 @@ mongosh<span class="w"> </span><span class="se">\</span>
 <ol>
 <li>Update a users document</li>
 </ol>
-<div class="highlight"><pre><span></span><code>use<span class="w"> </span>rehua
+<div class="highlight"><pre><span></span><code><span class="nx">use</span><span class="w"> </span><span class="nx">rehua</span>
 
-db.users.updateOne<span class="o">(</span>
-<span class="w">  </span><span class="o">{</span><span class="w"> </span>userName:<span class="w"> </span><span class="s2">"admin1"</span><span class="w"> </span><span class="o">}</span>,
-<span class="w">  </span><span class="o">{</span>
-<span class="w">    </span><span class="nv">$set</span>:<span class="w"> </span><span class="o">{</span>
-<span class="w">      </span>password:<span class="w"> </span><span class="s2">"</span><span class="nv">$2</span><span class="s2">b</span><span class="nv">$10$hUHQsZLMXpjHMO9qbUhnkuSmo4oKLFrFfog3eTe1</span><span class="s2">.QlPLnQ4ser7a"</span>,
-<span class="w">      </span>totpSecret:<span class="w"> </span><span class="s2">"NEW_TOTP_SECRET"</span>
-<span class="w">    </span><span class="o">}</span>
-<span class="w">  </span><span class="o">}</span>
-<span class="o">)</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">users</span><span class="p">.</span><span class="nx">updateOne</span><span class="p">(</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">userName</span><span class="o">:</span><span class="w"> </span><span class="s2">"admin1"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">$set</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">password</span><span class="o">:</span><span class="w"> </span><span class="s2">"$2b$10$hUHQsZLMXpjHMO9qbUhnkuSmo4oKLFrFfog3eTe1.QlPLnQ4ser7a"</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">totpSecret</span><span class="o">:</span><span class="w"> </span><span class="s2">"NEW_TOTP_SECRET"</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">)</span>
 </code></pre></div>
 <ol>
 <li>use a totp website or app to get rolling code for the totp secret <code>JBSWY3DPEHPK3PXPJBSWY3DPEHPK3PXP</code></li>

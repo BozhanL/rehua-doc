@@ -31,7 +31,7 @@ mongosh \
   --tls \
   --tlsCAFile /cert/ca.pem \
   --tlsCertificateKeyFile /cert/fullchain_with_key.pem \
-  --tlsAllowInvalidHostnames
+  --tlsAllowInvalidHostnames'
 ```
 
 2. Insert Admin user document

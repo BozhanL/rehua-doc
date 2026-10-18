@@ -728,15 +728,15 @@
 <li>Access MongoDB Shell
    Run the following command in your terminal to access the MongoDB shell using <code>docker-compose</code>:</li>
 </ol>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>mongo<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="err">'</span>
-mongosh<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span><span class="s2">"mongodb://127.0.0.1:27017/?authSource=admin"</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--username<span class="w"> </span><span class="s2">"</span><span class="k">$(</span>cat<span class="w"> </span>/run/secrets/mongo_username<span class="k">)</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--password<span class="w"> </span><span class="s2">"</span><span class="k">$(</span>cat<span class="w"> </span>/run/secrets/mongo_password<span class="k">)</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--tls<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--tlsCAFile<span class="w"> </span>/cert/ca.pem<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--tlsCertificateKeyFile<span class="w"> </span>/cert/fullchain_with_key.pem<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--tlsAllowInvalidHostnames
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>mongo<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">'</span>
+<span class="s1">mongosh \</span>
+<span class="s1">  "mongodb://127.0.0.1:27017/?authSource=admin" \</span>
+<span class="s1">  --username "$(cat /run/secrets/mongo_username)" \</span>
+<span class="s1">  --password "$(cat /run/secrets/mongo_password)" \</span>
+<span class="s1">  --tls \</span>
+<span class="s1">  --tlsCAFile /cert/ca.pem \</span>
+<span class="s1">  --tlsCertificateKeyFile /cert/fullchain_with_key.pem \</span>
+<span class="s1">  --tlsAllowInvalidHostnames'</span>
 </code></pre></div>
 <ol>
 <li>Insert Admin user document</li>

@@ -84,7 +84,7 @@ db.users.updateOne(
   {
     $set: {
       password: "$2b$10$hUHQsZLMXpjHMO9qbUhnkuSmo4oKLFrFfog3eTe1.QlPLnQ4ser7a",
-      totpSecret: "NEW_TOTP_SECRET"
+      totpSecret: "JBSWY3DPEHPK3PXPJBSWY3DPEHPK3PXP"
     }
   }
 )

@@ -54,7 +54,7 @@ db.users.insertOne({
 ```
 
 3. use a totp website or app to get rolling code for the totp secret `JBSWY3DPEHPK3PXPJBSWY3DPEHPK3PXP`
-4. Login using the username `admin1` and the password `password123`, then enter the totp rolling code
+4. Login using your username and the password `password123`, then enter the totp rolling code
 5. In the user dashboard reset the `password` and `MFA` for the `admin` user
 
 ## Reset Admin password and totp secret
@@ -71,7 +71,7 @@ mongosh \
   --tls \
   --tlsCAFile /cert/ca.pem \
   --tlsCertificateKeyFile /cert/fullchain_with_key.pem \
-  --tlsAllowInvalidHostnames
+  --tlsAllowInvalidHostnames'
 ```
 
 2. Update a users document
@@ -80,7 +80,7 @@ mongosh \
 use rehua
 
 db.users.updateOne(
-  { userName: "admin1" },
+  { userName: "REPLACE WITH YOUR USERNAME" },
   {
     $set: {
       password: "$2b$10$hUHQsZLMXpjHMO9qbUhnkuSmo4oKLFrFfog3eTe1.QlPLnQ4ser7a",

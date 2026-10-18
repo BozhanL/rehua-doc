@@ -758,7 +758,7 @@
 </code></pre></div>
 <ol>
 <li>use a totp website or app to get rolling code for the totp secret <code>JBSWY3DPEHPK3PXPJBSWY3DPEHPK3PXP</code></li>
-<li>Login using the username <code>admin1</code> and the password <code>password123</code>, then enter the totp rolling code</li>
+<li>Login using your username and the password <code>password123</code>, then enter the totp rolling code</li>
 <li>In the user dashboard reset the <code>password</code> and <code>MFA</code> for the <code>admin</code> user</li>
 </ol>
 <h2 id="reset-admin-password-and-totp-secret">Reset Admin password and totp secret</h2>
@@ -766,15 +766,15 @@
 <li>Access MongoDB Shell
    Run the following command in your terminal to access the MongoDB shell using <code>docker-compose</code>:</li>
 </ol>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>mongo<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="err">'</span>
-mongosh<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span><span class="s2">"mongodb://127.0.0.1:27017/?authSource=admin"</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--username<span class="w"> </span><span class="s2">"</span><span class="k">$(</span>cat<span class="w"> </span>/run/secrets/mongo_username<span class="k">)</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--password<span class="w"> </span><span class="s2">"</span><span class="k">$(</span>cat<span class="w"> </span>/run/secrets/mongo_password<span class="k">)</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--tls<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--tlsCAFile<span class="w"> </span>/cert/ca.pem<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--tlsCertificateKeyFile<span class="w"> </span>/cert/fullchain_with_key.pem<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--tlsAllowInvalidHostnames
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>mongo<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">'</span>
+<span class="s1">mongosh \</span>
+<span class="s1">  "mongodb://127.0.0.1:27017/?authSource=admin" \</span>
+<span class="s1">  --username "$(cat /run/secrets/mongo_username)" \</span>
+<span class="s1">  --password "$(cat /run/secrets/mongo_password)" \</span>
+<span class="s1">  --tls \</span>
+<span class="s1">  --tlsCAFile /cert/ca.pem \</span>
+<span class="s1">  --tlsCertificateKeyFile /cert/fullchain_with_key.pem \</span>
+<span class="s1">  --tlsAllowInvalidHostnames'</span>
 </code></pre></div>
 <ol>
 <li>Update a users document</li>
@@ -782,7 +782,7 @@ mongosh<span class="w"> </span><span class="se">\</span>
 <div class="highlight"><pre><span></span><code><span class="nx">use</span><span class="w"> </span><span class="nx">rehua</span>
 
 <span class="nx">db</span><span class="p">.</span><span class="nx">users</span><span class="p">.</span><span class="nx">updateOne</span><span class="p">(</span>
-<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">userName</span><span class="o">:</span><span class="w"> </span><span class="s2">"admin1"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">userName</span><span class="o">:</span><span class="w"> </span><span class="s2">"REPLACE WITH YOUR USERNAME"</span><span class="w"> </span><span class="p">},</span>
 <span class="w">  </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">$set</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nx">password</span><span class="o">:</span><span class="w"> </span><span class="s2">"$2b$10$hUHQsZLMXpjHMO9qbUhnkuSmo4oKLFrFfog3eTe1.QlPLnQ4ser7a"</span><span class="p">,</span>

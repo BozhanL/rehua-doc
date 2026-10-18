@@ -92,7 +92,7 @@ db.users.updateOne(
 
 3. use a totp website or app to get rolling code for the totp secret `JBSWY3DPEHPK3PXPJBSWY3DPEHPK3PXP`
 4. Login using your username and the password `password123`, then enter the totp rolling code
-5. In the user dashboard reset the `password` and `MFA` for the `admin` user
+5. In the user dashboard reset the `password` and `MFA` for your user account
 
 ## Structure diagram
 

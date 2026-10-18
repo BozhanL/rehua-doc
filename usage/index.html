@@ -435,6 +435,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#add-first-admin-user" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Add First Admin User
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reset-admin-password-and-totp-secret" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reset Admin password and totp secret
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#structure-diagram" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -632,6 +654,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#add-first-admin-user" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Add First Admin User
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reset-admin-password-and-totp-secret" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reset Admin password and totp secret
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#structure-diagram" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -672,11 +716,85 @@
 <li>Execute <code>nginx/html/create_web.sh</code> to download and compile the web</li>
 <li>Replace <code>logo.jpg</code> and <code>favicon.jpg</code> with your own logo in <code>nginx/html/rehua</code> folder</li>
 <li>(Optional) Edit the image version for <code>api</code> in <code>compose.yaml</code> to match web version. Default is <code>main</code></li>
+<li>Update <code>JWT_SECRET</code> in <code>compose.yaml</code> with your own secret key, generated using OpenSSL <code>openssl rand -hex 32</code> or other key generator</li>
 <li>Edit username, password, connection string for mongo in <code>mongo/mongo_username.txt</code>, <code>mongo/mongo_password.txt</code>, <code>mongo/mongodb_url.txt</code>. Default is <code>admin</code></li>
 <li>Execute <code>certs/create_test_cert.sh</code> to create internal certificates</li>
 <li>Edit <code>nginx/conf/conf.d/rehua.conf</code> to change <code>server_name</code> to your own domain.</li>
 <li>Put SSL/TLS certificate and private key into the local <code>certs/nginx</code> folder, and update <code>ssl_certificate</code> and <code>ssl_certificate_key</code> in <code>nginx/conf/conf.d/rehua.conf</code>. (This folder is mounted into the nginx container at <code>/cert</code>.)</li>
 <li>Run <code>docker compose up -d</code> to start all services.</li>
+</ol>
+<h2 id="add-first-admin-user">Add First Admin User</h2>
+<ol>
+<li>Access MongoDB Shell
+   Run the following command in your terminal to access the MongoDB shell using <code>docker-compose</code>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>mongo<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">'</span>
+<span class="s1">mongosh \</span>
+<span class="s1">  "mongodb://127.0.0.1:27017/?authSource=admin" \</span>
+<span class="s1">  --username "$(cat /run/secrets/mongo_username)" \</span>
+<span class="s1">  --password "$(cat /run/secrets/mongo_password)" \</span>
+<span class="s1">  --tls \</span>
+<span class="s1">  --tlsCAFile /cert/ca.pem \</span>
+<span class="s1">  --tlsCertificateKeyFile /cert/fullchain_with_key.pem \</span>
+<span class="s1">  --tlsAllowInvalidHostnames'</span>
+</code></pre></div>
+<ol>
+<li>Insert Admin user document</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nx">use</span><span class="w"> </span><span class="nx">rehua</span>
+
+<span class="nx">db</span><span class="p">.</span><span class="nx">users</span><span class="p">.</span><span class="nx">insertOne</span><span class="p">({</span>
+<span class="w">   </span><span class="s2">"userName"</span><span class="o">:</span><span class="w"> </span><span class="s2">"admin1"</span><span class="p">,</span>
+<span class="w">   </span><span class="s2">"firstName"</span><span class="o">:</span><span class="w"> </span><span class="s2">"Admin"</span><span class="p">,</span>
+<span class="w">   </span><span class="s2">"lastName"</span><span class="o">:</span><span class="w"> </span><span class="s2">"Admin1"</span><span class="p">,</span>
+<span class="w">   </span><span class="s2">"password"</span><span class="o">:</span><span class="w"> </span><span class="s2">"$2b$10$hUHQsZLMXpjHMO9qbUhnkuSmo4oKLFrFfog3eTe1.QlPLnQ4ser7a"</span><span class="p">,</span>
+<span class="w">   </span><span class="s2">"totpSecret"</span><span class="o">:</span><span class="w"> </span><span class="s2">"JBSWY3DPEHPK3PXPJBSWY3DPEHPK3PXP"</span><span class="p">,</span>
+<span class="w">   </span><span class="s2">"email"</span><span class="o">:</span><span class="w"> </span><span class="s2">"N/A"</span><span class="p">,</span>
+<span class="w">   </span><span class="s2">"status"</span><span class="o">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span>
+<span class="w">   </span><span class="s2">"homePhoneNumber"</span><span class="o">:</span><span class="w"> </span><span class="s2">"N/A"</span><span class="p">,</span>
+<span class="w">   </span><span class="s2">"address"</span><span class="o">:</span><span class="w"> </span><span class="s2">"N/A"</span><span class="p">,</span>
+<span class="w">   </span><span class="s2">"group"</span><span class="o">:</span><span class="w"> </span><span class="s2">"admin"</span><span class="p">,</span>
+<span class="p">})</span>
+</code></pre></div>
+<ol>
+<li>use a totp website or app to get rolling code for the totp secret <code>JBSWY3DPEHPK3PXPJBSWY3DPEHPK3PXP</code></li>
+<li>Login using the username <code>admin1</code> and the password <code>password123</code>, then enter the totp rolling code</li>
+<li>In the user dashboard reset the <code>password</code> and <code>MFA</code> for the <code>admin1</code> user account</li>
+</ol>
+<h2 id="reset-admin-password-and-totp-secret">Reset Admin password and totp secret</h2>
+<ol>
+<li>Access MongoDB Shell
+   Run the following command in your terminal to access the MongoDB shell using <code>docker-compose</code>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>mongo<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">'</span>
+<span class="s1">mongosh \</span>
+<span class="s1">  "mongodb://127.0.0.1:27017/?authSource=admin" \</span>
+<span class="s1">  --username "$(cat /run/secrets/mongo_username)" \</span>
+<span class="s1">  --password "$(cat /run/secrets/mongo_password)" \</span>
+<span class="s1">  --tls \</span>
+<span class="s1">  --tlsCAFile /cert/ca.pem \</span>
+<span class="s1">  --tlsCertificateKeyFile /cert/fullchain_with_key.pem \</span>
+<span class="s1">  --tlsAllowInvalidHostnames'</span>
+</code></pre></div>
+<ol>
+<li>Update a users document</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nx">use</span><span class="w"> </span><span class="nx">rehua</span>
+
+<span class="nx">db</span><span class="p">.</span><span class="nx">users</span><span class="p">.</span><span class="nx">updateOne</span><span class="p">(</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">userName</span><span class="o">:</span><span class="w"> </span><span class="s2">"REPLACE WITH YOUR USERNAME"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">$set</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">password</span><span class="o">:</span><span class="w"> </span><span class="s2">"$2b$10$hUHQsZLMXpjHMO9qbUhnkuSmo4oKLFrFfog3eTe1.QlPLnQ4ser7a"</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">totpSecret</span><span class="o">:</span><span class="w"> </span><span class="s2">"JBSWY3DPEHPK3PXPJBSWY3DPEHPK3PXP"</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">)</span>
+</code></pre></div>
+<ol>
+<li>use a totp website or app to get rolling code for the totp secret <code>JBSWY3DPEHPK3PXPJBSWY3DPEHPK3PXP</code></li>
+<li>Login using your username and the password <code>password123</code>, then enter the totp rolling code</li>
+<li>In the user dashboard reset the <code>password</code> and <code>MFA</code> for your user account</li>
 </ol>
 <h2 id="structure-diagram">Structure diagram</h2>
 <pre class="mermaid"><code>architecture-beta

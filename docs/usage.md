@@ -10,7 +10,7 @@ This page explains how to get started with rehua.
 4. Execute `nginx/html/create_web.sh` to download and compile the web
 5. Replace `logo.jpg` and `favicon.jpg` with your own logo in `nginx/html/rehua` folder
 6. (Optional) Edit the image version for `api` in `compose.yaml` to match web version. Default is `main`
-7. Update `JWT_SECRET` in `compose.yaml` with your own secret key, generated using OpenSSL or other key generator
+7. Update `JWT_SECRET` in `compose.yaml` with your own secret key, generated using OpenSSL `openssl rand -hex 32` or other key generator
 8. Edit username, password, connection string for mongo in `mongo/mongo_username.txt`, `mongo/mongo_password.txt`, `mongo/mongodb_url.txt`. Default is `admin`
 9. Execute `certs/create_test_cert.sh` to create internal certificates
 10. Edit `nginx/conf/conf.d/rehua.conf` to change `server_name` to your own domain.
@@ -36,7 +36,7 @@ mongosh \
 
 2. Insert Admin user document
 
-```bash
+```javascript
 use rehua
 
 db.users.insertOne({
@@ -76,7 +76,7 @@ mongosh \
 
 2. Update a users document
 
-```bash
+```javascript
 use rehua
 
 db.users.updateOne(

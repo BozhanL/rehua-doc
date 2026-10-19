@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: MIT -->
+
 # Usage
 
 This page explains how to get started with rehua.

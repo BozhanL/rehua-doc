@@ -2,7 +2,7 @@
 
 services:
     nginx:
-        image: nginx:1.30-trixie@sha256:cd2c2cbaf830beaadb169f8ad4020e1fb913f17210a674c3398b8dd350ac2ae5
+        image: nginx:1.30-trixie@sha256:0e99fef52612699fd524e2a5111e8c6397cf29f24ae1b48d3902b8d65b14bbbf
         ports:
             - 80:80/tcp
             - 443:443/tcp
